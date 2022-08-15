@@ -10,13 +10,13 @@ const Signup = () => {
     const textFieldStyle = { margin: '8px 0' }
     const btnStyle = { margin: '8px 0' }
     const initialValues = {
-        username: '',
+        name: '',
         email: '',
         password: '',
         confirmPassword: '',
     }
     const validationSchema = Yup.object().shape({
-        username: Yup.string().min(3, "Too Short username").required("Required"),
+        name: Yup.string().min(3, "Too Short name").required("Required"),
         email: Yup.string().email("Enter valid email").required("Required"),
         password: Yup.string().min(8, "Password minimum length should be 8").required("Required"),
         confirmPassword: Yup.string().oneOf([Yup.ref('password')], "Password not matched").required("Required"),
@@ -27,7 +27,7 @@ const Signup = () => {
         setTimeout(() => {
             props.resetForm()
             props.setSubmitting(false)
-        }, 2000)
+        }, 1000)
     }
 
 
@@ -49,7 +49,7 @@ const Signup = () => {
                 <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
                     {(props) => (
                         <Form>
-                            <Field as={TextField} name="username" fullWidth label='Username' placeholder="Please enter your username" helperText={<ErrorMessage name="username" />} />
+                            <Field as={TextField} name="name" fullWidth label='Name' placeholder="Please enter your name" helperText={<ErrorMessage name="name" />} />
                             <Field as={TextField} name="email" style={textFieldStyle} fullWidth label='Email' placeholder="Please enter your Email" helperText={<ErrorMessage name="email" />} />
                             <Field as={TextField} name="password" style={textFieldStyle} fullWidth placeholder="Please enter your password" label='Password' type='password' helperText={<ErrorMessage name="password" />} />
                             <Field as={TextField} name="confirmPassword" style={textFieldStyle} fullWidth placeholder="Please confirm your password" label='Confirm Password' type='password' helperText={<ErrorMessage name="confirmPassword" />} />

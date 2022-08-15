@@ -1,7 +1,7 @@
 {
   "users": [
-      {"id": 1,  "username": "TauriR", "email": "tauri.ruut@gmail.com", "password": "password"},
-      {"id": 2,  "username": "PeterK", "email": "Peter.karupoeg@gmail.com", "password": "password123"},
-      {"id": 3,  "username": "JaanikaM", "email": "Jaanika.marila@gmail.com", "password": "password321"}
+      {"id": 1,  "name": "TauriR", "email": "tauri.ruut@gmail.com", "password": "password"},
+      {"id": 2,  "name": "PeterK", "email": "Peter.karupoeg@gmail.com", "password": "password123"},
+      {"id": 3,  "name": "JaanikaM", "email": "Jaanika.marila@gmail.com", "password": "password321"}
   ]
 }
