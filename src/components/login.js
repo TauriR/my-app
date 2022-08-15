@@ -23,7 +23,7 @@ const Login = () => {
             props.resetForm()
             props.setSubmitting(false)
         }, 2000)
-        console.log(props)
+
     }
 
     return (
