@@ -23,7 +23,6 @@ const Login = () => {
     const onSubmit = (values, props) => {
         const emailInput = document.querySelector("#emailField").value;
         const passwordInput = document.querySelector("#passwordField").value;
-        console.log(emailInput);
         if (emailInput && passwordInput) {
             if (emailInput === JSON.parse(localStorage.getItem('user')).email) {
                 if (passwordInput === JSON.parse(localStorage.getItem('user')).password) {
@@ -41,7 +40,6 @@ const Login = () => {
             localStorage.getItem('user')
             localStorage.getItem(values);
             props.resetForm()
-
         }, 2000)
 
     }
