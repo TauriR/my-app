@@ -23,10 +23,9 @@ const Signup = () => {
     })
 
     const onSubmit = (values, props) => {
-        console.log(values)
         setTimeout(() => {
-            props.resetForm()
-            props.setSubmitting(false)
+           localStorage.setItem('user', JSON.stringify(values));
+           props.resetForm()
         }, 1000)
     }
 
