@@ -1,8 +1,9 @@
 import React from 'react';
 import { Avatar, Button, Grid, Link, Paper, TextField, Typography } from '@mui/material'
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
-import { Formik, Field, Form, ErrorMessage } from 'formik'
+import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
+import { loginForm } from '../components/loginForm';
 
 const Login = () => {
     const paperStyle = { padding: '20px 30px', height: '100%', width: 300, margin: "20px auto" }
@@ -36,8 +37,12 @@ const Login = () => {
                 <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
                     {(props) => (
                         <Form>
-                            <Field as={TextField} style={textFieldStyle} label='Username' name="username" placeholder='Enter your username' fullWidth  helperText={<ErrorMessage name="username" />} />
-                            <Field as={TextField} style={textFieldStyle} label='Password' name="password" placeholder='Enter your password' type='password' fullWidth  helperText={<ErrorMessage name="password" />} />
+                            {loginForm.map(input => 
+                            <Grid>
+                                <TextField key={input.id} style={textFieldStyle} {...input} />
+                            </Grid>
+                                )}
+                            
                             <Button type='Submit' variant="contained" disabled={props.isSubmitting}color='primary' style={btnStyle} fullWidth >{props.isSubmitting ? "Loading" : "Sign in"}</Button>
                             <Typography>Do you have Account?
                                 <Link href="/signup"> Register</Link>
