@@ -25,6 +25,7 @@ const Signup = () => {
     const onSubmit = (values, props) => {
         setTimeout(() => {
            localStorage.setItem('user', JSON.stringify(values));
+           alert("Registered")
            props.resetForm()
         }, 1000)
     }
@@ -32,9 +33,7 @@ const Signup = () => {
 
     return (
         <Grid>
-
             <Paper elevatin={10} style={paperStyle}>
-
                 <Grid align="center">
                     <Link href="/" align="center" color="inherit"> Back to Sign In</Link>
                     <Avatar style={avatarStyle}>

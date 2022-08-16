@@ -10,18 +10,38 @@ const Login = () => {
     const btnStyle = { margin: '8px 0' }
     const textFieldStyle = { margin: '8px 0' }
     const initialValues = {
-        username: '',
+        email: '',
         password: '',
     }
     const validationSchema = Yup.object().shape({
-        username: Yup.string().email('please enter valid email').required("Required"),
+        email: Yup.string().email('please enter valid email').required("Required"),
         password: Yup.string().required("Required")
     })
+
+
+
     const onSubmit = (values, props) => {
-        console.log(values)
+        const emailInput = document.querySelector("#emailField").value;
+        const passwordInput = document.querySelector("#passwordField").value;
+        console.log(emailInput);
+        if (emailInput && passwordInput) {
+            if (emailInput === JSON.parse(localStorage.getItem('user')).email) {
+                if (passwordInput === JSON.parse(localStorage.getItem('user')).password) {
+                    window.location.href = "/logged"
+                } else {
+                    alert("Wrong password")
+                }
+            } else {
+                alert("Wrong email")
+            }
+        } else {
+            alert("Wrong input")
+        }
         setTimeout(() => {
+            localStorage.getItem('user')
+            localStorage.getItem(values);
             props.resetForm()
-            props.setSubmitting(false)
+
         }, 2000)
 
     }
@@ -36,9 +56,9 @@ const Login = () => {
                 <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
                     {(props) => (
                         <Form>
-                            <Field as={TextField} style={textFieldStyle} label='Username' name="username" placeholder='Enter your username' fullWidth  helperText={<ErrorMessage name="username" />} />
-                            <Field as={TextField} style={textFieldStyle} label='Password' name="password" placeholder='Enter your password' type='password' fullWidth  helperText={<ErrorMessage name="password" />} />
-                            <Button type='Submit' variant="contained" disabled={props.isSubmitting}color='primary' style={btnStyle} fullWidth >{props.isSubmitting ? "Loading" : "Sign in"}</Button>
+                            <Field id="emailField" as={TextField} style={textFieldStyle} label='Email' name="email" placeholder='Enter your Email' fullWidth helperText={<ErrorMessage name="email" />} />
+                            <Field id="passwordField" as={TextField} style={textFieldStyle} label='Password' name="password" placeholder='Enter your password' type='password' fullWidth helperText={<ErrorMessage name="password" />} />
+                            <Button type='Submit' variant="contained" disabled={props.isSubmitting} color='primary' style={btnStyle} fullWidth >{props.isSubmitting ? "Loading" : "Sign in"}</Button>
                             <Typography>Do you have Account?
                                 <Link href="/signup"> Register</Link>
                             </Typography>
