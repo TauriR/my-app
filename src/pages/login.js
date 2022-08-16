@@ -26,7 +26,6 @@ const Login = () => {
         }, 2000)
         console.log(props)
     }
-
     return (
         <Grid>
             <Paper elevatin={10} style={paperStyle}>
@@ -36,14 +35,13 @@ const Login = () => {
                 </Grid>
                 <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
                     {(props) => (
-                        <Form>
-                            {loginForm.map(input => 
-                            <Grid>
-                                <TextField key={input.id} style={textFieldStyle} {...input} />
-                            </Grid>
-                                )}
-                            
-                            <Button type='Submit' variant="contained" disabled={props.isSubmitting}color='primary' style={btnStyle} fullWidth >{props.isSubmitting ? "Loading" : "Sign in"}</Button>
+                        <Form action='localhost:3000' method='GET'>
+                            {loginForm.map(input =>
+                                <Grid>
+                                    <TextField key={loginForm} style={textFieldStyle} {...input} />
+                                </Grid>
+                            )}
+                            <Button type='Submit' variant="contained" disabled={props.isSubmitting} color='primary' style={btnStyle} fullWidth >{props.isSubmitting ? "Loading" : "Sign in"}</Button>
                             <Typography>Do you have Account?
                                 <Link href="/signup"> Register</Link>
                             </Typography>

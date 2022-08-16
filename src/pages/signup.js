@@ -3,7 +3,6 @@ import React from 'react';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import { Formik, Form, } from 'formik'
 import * as Yup from 'yup'
-
 import { inputFormElements } from '../components/registerFormElements';
 
 const Signup = () => {
@@ -26,7 +25,6 @@ const Signup = () => {
     })
 
     const onSubmit = (values, props) => {
-
         console.log(values)
         setTimeout(() => {
             props.resetForm()
@@ -34,12 +32,9 @@ const Signup = () => {
         }, 1000)
     }
 
-
     return (
         <Grid>
-
             <Paper elevatin={10} style={paperStyle}>
-
                 <Grid align="center">
                     <Link href="/" align="center" color="inherit"> Back to Sign In</Link>
                     <Avatar style={avatarStyle}>
@@ -48,18 +43,17 @@ const Signup = () => {
                     <Typography variant='h4' style={textFieldStyle} >
                         Sign Up
                     </Typography>
-
                     <Typography style={textFieldStyle} >
                         Please fill this form to create an account
                     </Typography>
                 </Grid>
                 <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
                     {(props) => (
-                        <Form>
+                        <Form action='localhost:3000' method='POST'>
                             {
                                 inputFormElements.map(input =>
-                                    <Grid>
-                                    <TextField key={input.id} style={textFieldStyle} {...input} />
+                                    <Grid item>
+                                        <TextField key={input} style={textFieldStyle} {...input} />
                                     </Grid>
                                 )
                             }
